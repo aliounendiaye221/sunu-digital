@@ -373,6 +373,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
     -ms-overflow-style: none;  /* IE/Edge */
     margin-top: 1.5rem;
     scroll-snap-type: x mandatory;
+    justify-content: center;
 }
 .grid-videos::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
 .video-card { 
