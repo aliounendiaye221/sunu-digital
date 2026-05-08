@@ -163,4 +163,30 @@ document.addEventListener('DOMContentLoaded', () => {
         counterElements.forEach(el => counterObserver.observe(el));
     }
 
+    // --- VIDEO NAVIGATION ---
+    const videoGrid = document.getElementById('videoGrid');
+    const prevBtn = document.getElementById('prevVideo');
+    const nextBtn = document.getElementById('nextVideo');
+
+    if (videoGrid && prevBtn && nextBtn) {
+        const scrollAmount = 350; // Approximative width of a video card + gap
+
+        nextBtn.addEventListener('click', () => {
+            videoGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            videoGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        // Hide/show buttons based on scroll position (optional but nice)
+        const toggleBtns = () => {
+            prevBtn.style.opacity = videoGrid.scrollLeft <= 10 ? '0.3' : '1';
+            nextBtn.style.opacity = videoGrid.scrollLeft + videoGrid.clientWidth >= videoGrid.scrollWidth - 10 ? '0.3' : '1';
+        };
+
+        videoGrid.addEventListener('scroll', toggleBtns);
+        window.addEventListener('resize', toggleBtns);
+        toggleBtns();
+    }
 });
